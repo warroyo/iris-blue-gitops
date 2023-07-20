@@ -1,0 +1,12 @@
+apiVersion: tmc.tanzufield.vmware.com/v1
+kind: TMCNamespace
+metadata:
+  name: iris-blue-apps
+  labels:
+    version: v1
+spec:
+  fullName:
+    name: iris-blue-apps
+  meta:
+    labels:
+      team: iris-blue

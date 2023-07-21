@@ -1,0 +1,27 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: iris-blue-apps
+  namespace: iris-blue
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  url: https://github.com/warroyo/iris-blue-apps
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: iris-blue-apps
+  namespace: iris-blue
+spec:
+  interval: 10m0s
+  path: ./config/k8s/test
+  prune: true
+  serviceAccountName: tenant-flux-reconciler
+  targetNamespace: iris-blue-apps
+  sourceRef:
+    kind: GitRepository
+    name: iris-blue-apps

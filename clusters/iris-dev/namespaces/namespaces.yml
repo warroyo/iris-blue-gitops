@@ -10,3 +10,16 @@ spec:
   meta:
     labels:
       team: iris-blue
+---
+apiVersion: tmc.tanzufield.vmware.com/v1
+kind: TMCNamespace
+metadata:
+  name: iris-blue-apps-gci
+  labels:
+    version: v1
+spec:
+  fullName:
+    name: iris-blue-apps-gci
+  meta:
+    labels:
+      team: iris-blue

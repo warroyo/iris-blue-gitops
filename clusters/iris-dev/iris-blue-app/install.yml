@@ -11,17 +11,26 @@ spec:
   url: https://github.com/warroyo/iris-blue-apps
 
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
 metadata:
   name: iris-blue-apps
   namespace: iris-blue
 spec:
-  interval: 10m0s
-  path: ./config/k8s/dev
-  prune: true
-  serviceAccountName: tenant-flux-reconciler
-  targetNamespace: iris-blue-apps
-  sourceRef:
-    kind: GitRepository
-    name: iris-blue-apps
+  interval: 5m
+  chart:
+    spec:
+      chart: iris-blue-apps
+      version: ">=0.1.0"
+      sourceRef:
+        kind: GitRepository
+        name: iris-blue-apps
+        namespace: iris-blue
+      interval: 1m
+  upgrade:
+    remediation:
+      remediateLastFailure: true
+  values:
+    httpproxy:
+      fqdn: iris-blue-app.dev.fluxtmc.aws.warroyo.com
+    apptext: iris-blue dev app

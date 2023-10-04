@@ -22,7 +22,7 @@ spec:
   targetNamespace: iris-blue-apps
   chart:
     spec:
-      chart: iris-blue-apps/
+      chart: iris-blue-app/
       version: ">=0.1.0"
       sourceRef:
         kind: GitRepository

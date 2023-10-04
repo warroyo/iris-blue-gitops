@@ -35,4 +35,4 @@ spec:
   values:
     httpproxy:
       fqdn: iris-blue-app.dev.fluxtmc.aws.warroyo.com
-    appText: iris-blue dev app
+    appText: iris-blue dev app ball aero
